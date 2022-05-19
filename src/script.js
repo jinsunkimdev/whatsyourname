@@ -6,6 +6,7 @@ import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 /**
  * Base
  */
+
 // DOM elements
 const canvas = document.querySelector('canvas.webgl')
 const inputTag = document.querySelector('input')
@@ -13,6 +14,7 @@ const inputForm = document.querySelector('#input__form')
 const inputName = document.querySelector('#input__name')
 // Scene
 const scene = new THREE.Scene()
+
 // Custom Method
 const createTextGeometry = (inputText) =>
 {
