@@ -1,0 +1,32 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+main{
+    width: 100vw;
+    z-index: 99;
+    position: absolute;
+    width: 100%;
+    margin: 0px auto
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+/* Test */
+header{
+    color: white;
+}
