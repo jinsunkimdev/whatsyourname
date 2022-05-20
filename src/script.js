@@ -117,9 +117,9 @@ const createTextGeometry = (inputText) =>
                 - (textGeometry.boundingBox.max.z - 0.03) * 0.5  // Subtract bevel thickness
         )
         const text = new THREE.Mesh(textGeometry, textMaterial)
-        text.position.x = ( Math.random() - 0.5 ) * 15
-        text.position.y = ( Math.random() - 0.5 ) * 15
-        text.position.z = ( Math.random() - 0.5 ) * 15
+        text.position.x = ( Math.random() - 0.5 ) * 18
+        text.position.y = ( Math.random() - 0.5 ) * 18
+        text.position.z = ( Math.random() - 0.5 ) * 18
         text.rotation.set(Math.PI * Math.random(), Math.PI * Math.random(), Math.PI * Math.random())
         text.scale.set(( Math.random() - 0.5 ) * 2.5, ( Math.random() - 1.5 ) * 1.5, ( Math.random() - 0.5 ) * 1.5 )
         scene.add(text)
@@ -160,9 +160,9 @@ for(let i = 0; i < 120; i++)
     const knotGeometry = new THREE.TorusKnotBufferGeometry(0.5, 0.2, 44, 5)
     const knotMaterial = new THREE.MeshMatcapMaterial({ matcap: knotMatcapsTexture })
     const knot = new THREE.Mesh(knotGeometry, knotMaterial)
-    knot.position.x = ( Math.random() - 0.5 ) * 20
-    knot.position.y = ( Math.random() - 0.5 ) * 20
-    knot.position.z = ( Math.random() - 0.5 ) * 20
+    knot.position.x = ( Math.random() - 0.5 ) * 18
+    knot.position.y = ( Math.random() - 0.5 ) * 18
+    knot.position.z = ( Math.random() - 0.5 ) * 18
     knot.rotation.x = Math.random() * Math.PI
     knot.rotation.y = Math.random() * Math.PI
     const scale = Math.random()
@@ -205,6 +205,7 @@ scene.add(camera)
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 controls.enableZoom = false
+controls.enablePan = false
 
 /**
  * Renderer
