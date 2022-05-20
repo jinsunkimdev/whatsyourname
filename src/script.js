@@ -15,19 +15,90 @@ const inputName = document.querySelector('#input__name')
 // Scene
 const scene = new THREE.Scene()
 
+// Texture
+const textureLoader = new THREE.TextureLoader()
+
+const colorTexture = textureLoader.load('/textures/matcaps/sky.png')
+colorTexture.generateMipmaps = false
+colorTexture.minFilter = THREE.NearestFilter
+
+const shrekTexture = textureLoader.load('/textures/matcaps/shrek.png')
+shrekTexture.generateMipmaps = false
+shrekTexture.minFilter = THREE.NearestFilter
+
+const artMetalTexture = textureLoader.load('/textures/matcaps/white.png')
+artMetalTexture.generateMipmaps = false
+artMetalTexture.minFilter = THREE.NearestFilter
+
+const featherTexture = textureLoader.load('/textures/matcaps/magma.png')
+featherTexture.generateMipmaps = false
+featherTexture.minFilter = THREE.NearestFilter
+
+const paperTexture = textureLoader.load('/textures/matcaps/paper.png')
+paperTexture.generateMipmaps = false
+paperTexture.minFilter = THREE.NearestFilter
+
+const purpleTexture = textureLoader.load('/textures/matcaps/purple.png')
+purpleTexture.generateMipmaps = false
+purpleTexture.minFilter = THREE.NearestFilter
+
+const bGreenTexture = textureLoader.load('/textures/matcaps/bright_green.png')
+bGreenTexture.generateMipmaps = false
+bGreenTexture.minFilter = THREE.NearestFilter
+
+const blueFabricTexture = textureLoader.load('/textures/matcaps/bright_green.png')
+blueFabricTexture.generateMipmaps = false
+blueFabricTexture.minFilter = THREE.NearestFilter
+
+const redblueTexture = textureLoader.load('/textures/matcaps/redblue.png')
+redblueTexture.generateMipmaps = false
+redblueTexture.minFilter = THREE.NearestFilter
+
+const eggTexture = textureLoader.load('/textures/matcaps/egg.png')
+eggTexture.generateMipmaps = false
+eggTexture.minFilter = THREE.NearestFilter
+
+const greenWhiteStoneTexture = textureLoader.load('/textures/matcaps/green_white_stone.png')
+greenWhiteStoneTexture.generateMipmaps = false
+greenWhiteStoneTexture.minFilter = THREE.NearestFilter
+
+const peachTexture = textureLoader.load('/textures/matcaps/green_white_stone.png')
+peachTexture.generateMipmaps = false
+peachTexture.minFilter = THREE.NearestFilter
+
+const knotMatcapsTexture = textureLoader.load('/textures/matcaps/balloon_pink.png')
+knotMatcapsTexture.generateMipmaps = false
+knotMatcapsTexture.minFilter = THREE.NearestFilter
+
+const textureArr = [
+    blueFabricTexture,
+    bGreenTexture,
+    purpleTexture,
+    paperTexture,
+    featherTexture,    
+    artMetalTexture,
+    colorTexture,
+    eggTexture,
+    redblueTexture,
+    greenWhiteStoneTexture,
+    peachTexture
+]
+
+// Font
+const fontArr = ['/fonts/PressStart_2P_Regular.json', '/fonts/paladisescript.json', '/fonts/IndieFlower.json', '/fonts/amaticSC.json']
 // Custom Method
 const createTextGeometry = (inputText) =>
 {
     fontLoader.load(
-    '/fonts/PressStart_2P_Regular.json',
+    fontArr[ getTextureArrayNum(0, fontArr.length) ],
     (font) =>
     {
         const textGeometry = new TextGeometry(
             inputText,
             {
                 font: font,
-                size: 0.7,
-                height: 0.5,
+                size: 0.4,
+                height: 0.2,
                 curveSegments: 12,
                 bevelEnabled: true,
                 bevelThickness: 0.03,
@@ -36,8 +107,8 @@ const createTextGeometry = (inputText) =>
                 bevelSegments: 5
             }
         )
-        const textMaterial = new THREE.MeshBasicMaterial({
-            map: textureArr[getTextureArrayNum(0, textureArr.length)]
+        const textMaterial = new THREE.MeshMatcapMaterial({
+            matcap: textureArr[getTextureArrayNum(0, textureArr.length)]
         })
         textGeometry.computeBoundingBox()
         textGeometry.translate(
@@ -46,10 +117,11 @@ const createTextGeometry = (inputText) =>
                 - (textGeometry.boundingBox.max.z - 0.03) * 0.5  // Subtract bevel thickness
         )
         const text = new THREE.Mesh(textGeometry, textMaterial)
-        const rndNum = ( Math.random() - 0.5 ) * 10
-        text.position.set(rndNum, rndNum, rndNum)
-        text.rotation.set(Math.PI * rndNum, Math.PI * rndNum, Math.PI * rndNum)
-        text.scale.set(( Math.random() + 0.5 ) ,( Math.random() + 0.5 )  ,( Math.random() - 0.5 ) * 1.5 )
+        text.position.x = ( Math.random() - 0.5 ) * 15
+        text.position.y = ( Math.random() - 0.5 ) * 15
+        text.position.z = ( Math.random() - 0.5 ) * 15
+        text.rotation.set(Math.PI * Math.random(), Math.PI * Math.random(), Math.PI * Math.random())
+        text.scale.set(( Math.random() - 0.5 ) * 2.5, ( Math.random() - 1.5 ) * 1.5, ( Math.random() - 0.5 ) * 1.5 )
         scene.add(text)
     }
 )}
@@ -61,24 +133,8 @@ const clickInputBtn = (e) =>
     inputTag.value = ''
     createTextGeometry(inputText)
 }
-// Texture
-const textureLoader = new THREE.TextureLoader()
-const colorTexture = textureLoader.load('/textures/fabric/basecolor.jpg')
-colorTexture.generateMipmaps = false
-colorTexture.minFilter = THREE.NearestFilter
-const doorTexture = textureLoader.load('/textures/door/color.jpg')
-doorTexture.generateMipmaps = false
-doorTexture.minFilter = THREE.NearestFilter
-const metalTexture = textureLoader.load('/textures/metal/sifiMetal.jpeg')
-metalTexture.generateMipmaps = false
-metalTexture.minFilter = THREE.NearestFilter
-const artMetalTexture = textureLoader.load('/textures/metal/artDecoMetal.jpeg')
-artMetalTexture.generateMipmaps = false
-artMetalTexture.minFilter = THREE.NearestFilter
-const featherTexture = textureLoader.load('/textures/fabric/feather.jpeg')
-featherTexture.generateMipmaps = false
-featherTexture.minFilter = THREE.NearestFilter
-const textureArr = [colorTexture, doorTexture, metalTexture, artMetalTexture,featherTexture]
+
+
 const getTextureArrayNum = (min, max) =>
 {
     min = Math.ceil(min)
@@ -99,14 +155,14 @@ inputForm.addEventListener('submit',clickInputBtn)
 /**
  * Particles
  */
-for(let i = 0; i < 77; i++)
+for(let i = 0; i < 120; i++)
 {
     const knotGeometry = new THREE.TorusKnotBufferGeometry(0.5, 0.2, 44, 5)
-    const knotMaterial = new THREE.MeshNormalMaterial()
+    const knotMaterial = new THREE.MeshMatcapMaterial({ matcap: knotMatcapsTexture })
     const knot = new THREE.Mesh(knotGeometry, knotMaterial)
-    knot.position.x = ( Math.random() - 0.5 ) * 10
-    knot.position.y = ( Math.random() - 0.5 ) * 10
-    knot.position.z = ( Math.random() - 0.5 ) * 10
+    knot.position.x = ( Math.random() - 0.5 ) * 20
+    knot.position.y = ( Math.random() - 0.5 ) * 20
+    knot.position.z = ( Math.random() - 0.5 ) * 20
     knot.rotation.x = Math.random() * Math.PI
     knot.rotation.y = Math.random() * Math.PI
     const scale = Math.random()
@@ -142,12 +198,13 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.z = 6
+camera.position.z = 14
 scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
+controls.enableZoom = false
 
 /**
  * Renderer
