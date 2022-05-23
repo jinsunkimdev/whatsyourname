@@ -17,6 +17,7 @@ module.exports = merge(
         {
             level: 'warn',
         },
+        devtool: 'inline-source-map',
         devServer:
         {
             host: 'local-ip',
