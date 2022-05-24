@@ -15,7 +15,7 @@
             <h1>JINSUNKIMDEV</h1>
             <form id="input__form" class="simple__form">
                 <label for="name">What's Your Name? (4 to 12 characters):</label>
-                <input type="text" pattern="[A-Za-z]+" id="input__name" name="name" required minlength="4" maxlength="12" size="15" autocomplete="off" placeholder="Please enter English only">
+                <input type="text" pattern="^[a-zA-Z_]+( [a-zA-Z_]+)*$" id="input__name" name="name" required minlength="4" maxlength="12" size="15" autocomplete="off" placeholder="Please enter English only">
                 <button type="submit" id="inputBtn" value="INPUT">SUBMIT</button>
             </form>
         </header>

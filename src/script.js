@@ -2,7 +2,9 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { homePageText, knotParticles, clickInputBtn } from './custom/myFunction' 
-
+import GUI from 'lil-gui'
+// Debug
+//const gui = new GUI()
 /**
  * Base
  */
@@ -55,7 +57,8 @@ scene.add(camera)
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
-controls.enableZoom = false
+controls.maxDistance = 15
+controls.minDistance = 10
 controls.enablePan = false
 
 /**

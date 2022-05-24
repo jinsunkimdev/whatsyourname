@@ -105,12 +105,12 @@ export const clickInputBtn = (e) =>
 }
 export const knotParticles = () =>
 {
-    for(let i = 0; i < 77; i++)
+    for(let i = 0; i < 87; i++)
         {
             const knotGeometry = new THREE.TorusKnotBufferGeometry(0.5, 0.2, 44, 5)
             const knotMaterial = new THREE.MeshMatcapMaterial({ matcap: knotMatcapsTexture })
             const knot = new THREE.Mesh(knotGeometry, knotMaterial)
-            knot.position.x = ( Math.random() - 0.5 ) * 18
+            knot.position.x = ( Math.random() - 0.5 ) * 22
             knot.position.y = ( Math.random() - 0.5 ) * 18
             knot.position.z = ( Math.random() - 0.5 ) * 18
             knot.rotation.x = Math.random() * Math.PI
