@@ -15,14 +15,34 @@ export const canvas = document.querySelector('canvas.webgl')
 export const inputForm = document.querySelector('#input__form')
 export const inputTag = document.querySelector('input')
 export const inputName = document.querySelector('#input__name')
+export const resetViewBtn = document.querySelector('#resetViewBtn')
 
+/**
+ * Environment map
+ */
+// const environmentMap = CubeTextureLoader.load([
+
+// ])
+// scene.background = environmentMap
 /*
  * Functions
  */ 
 homePageText()
 knotParticles()
-inputForm.addEventListener('submit',clickInputBtn)
+inputForm.addEventListener('submit', clickInputBtn)
+resetViewBtn.addEventListener('click', () => {
+    // Update sizes
+    sizes.width = window.innerWidth
+    sizes.height = window.innerHeight
 
+    // Update camera
+    camera.aspect = sizes.width / sizes.height
+    camera.updateProjectionMatrix()
+
+    // Update renderer
+    renderer.setSize(sizes.width, sizes.height)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+})
 /**
  * Sizes
  */
@@ -50,7 +70,7 @@ window.addEventListener('resize', () =>
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+export const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.z = 15
 scene.add(camera)
 

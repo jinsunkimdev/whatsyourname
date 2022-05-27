@@ -96,6 +96,7 @@ fontLoader.load(
         scene.add(text)
     })
 }
+
 export const clickInputBtn = (e) =>
 {
     e.preventDefault()
@@ -103,6 +104,7 @@ export const clickInputBtn = (e) =>
     inputTag.value = ''
     createTextGeometry(inputText)
 }
+
 export const knotParticles = () =>
 {
     for(let i = 0; i < 87; i++)
