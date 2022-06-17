@@ -1,111 +1,110 @@
 import './style.css'
+import Experience from './Experience/Experience'
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { homePageText, knotParticles, clickInputBtn } from './custom/myFunction' 
-import GUI from 'lil-gui'
-// Debug
-//const gui = new GUI()
-/**
- * Base
- */
-// Scene
-export const scene = new THREE.Scene()
-// DOM elements
-export const canvas = document.querySelector('canvas.webgl')
-export const inputForm = document.querySelector('#input__form')
-export const inputTag = document.querySelector('input')
-export const inputName = document.querySelector('#input__name')
-export const resetViewBtn = document.querySelector('#resetViewBtn')
 
-/**
- * Environment map
- */
-// const environmentMap = CubeTextureLoader.load([
+const experience = new Experience(document.querySelector('canvas.webgl'))
+// import './style.css'
+// import * as THREE from 'three'
+// import { homePageText, knotParticles, clickInputBtn } from './custom/myFunction' 
+// /**
+//  * Base
+//  */
+// // Scene
+// export const scene = new THREE.Scene()
+// // DOM elements
+// export const canvas = document.querySelector('canvas.webgl')
+// export const inputForm = document.querySelector('#input__form')
+// export const inputTag = document.querySelector('input')
+// export const inputName = document.querySelector('#input__name')
+// export const resetViewBtn = document.querySelector('#resetViewBtn')
 
-// ])
-// scene.background = environmentMap
-/*
- * Functions
- */ 
-homePageText()
-knotParticles()
-inputForm.addEventListener('submit', clickInputBtn)
-resetViewBtn.addEventListener('click', () => {
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+// /**
+//  * Environment map
+//  */
+// // const environmentMap = CubeTextureLoader.load([
 
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
+// // ])
+// // scene.background = environmentMap
+// /*
+//  * Functions
+//  */ 
+// homePageText()
+// knotParticles()
+// inputForm.addEventListener('submit', clickInputBtn)
+// resetViewBtn.addEventListener('click', () => {
+//     // Update sizes
+//     sizes.width = window.innerWidth
+//     sizes.height = window.innerHeight
 
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-})
-/**
- * Sizes
- */
-const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
-}
+//     // Update camera
+//     camera.aspect = sizes.width / sizes.height
+//     camera.updateProjectionMatrix()
 
-window.addEventListener('resize', () =>
-{
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
+//     // Update renderer
+//     renderer.setSize(sizes.width, sizes.height)
+//     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+// })
+// /**
+//  * Sizes
+//  */
+// const sizes = {
+//     width: window.innerWidth,
+//     height: window.innerHeight
+// }
 
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
+// window.addEventListener('resize', () =>
+// {
+//     // Update sizes
+//     sizes.width = window.innerWidth
+//     sizes.height = window.innerHeight
 
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-})
+//     // Update camera
+//     camera.aspect = sizes.width / sizes.height
+//     camera.updateProjectionMatrix()
 
-/**
- * Camera
- */
-// Base camera
-export const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.z = 15
-scene.add(camera)
+//     // Update renderer
+//     renderer.setSize(sizes.width, sizes.height)
+//     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+// })
 
-// Controls
-const controls = new OrbitControls(camera, canvas)
-controls.enableDamping = true
-controls.maxDistance = 15
-controls.minDistance = 10
-controls.enablePan = false
+// /**
+//  * Camera
+//  */
+// // Base camera
+// export const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
+// camera.position.z = 15
+// scene.add(camera)
 
-/**
- * Renderer
- */
-const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
-})
-renderer.setSize(sizes.width, sizes.height)
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+// // Controls
+// const controls = new OrbitControls(camera, canvas)
+// controls.enableDamping = true
+// controls.maxDistance = 15
+// controls.minDistance = 10
+// controls.enablePan = false
 
-/**
- * Animate
- */
-const clock = new THREE.Clock()
+// /**
+//  * Renderer
+//  */
+// const renderer = new THREE.WebGLRenderer({
+//     canvas: canvas
+// })
 
-const tick = () =>
-{
-    const elapsedTime = clock.getElapsedTime()
+// /**
+//  * Animate
+//  */
+// const clock = new THREE.Clock()
 
-    // Update Objects
+// const tick = () =>
+// {
+//     const elapsedTime = clock.getElapsedTime()
 
-    // Render
-    renderer.render(scene, camera)
+//     // Update Objects
 
-    // Call tick again on the next frame
-    window.requestAnimationFrame(tick)
-}
+//     // Render
+//     renderer.render(scene, camera)
 
-tick()
+//     // Call tick again on the next frame
+//     window.requestAnimationFrame(tick)
+// }
+
+// tick()
